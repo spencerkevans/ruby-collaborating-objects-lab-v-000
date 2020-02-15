@@ -1,5 +1,5 @@
 class Artist
-	attr_accessor :name
+	attr_accessor :name, :songs
 
 	@@all = []
 
@@ -20,19 +20,19 @@ class Artist
 		song.artist = self
 	end
 
-	def self.create_by_name(artist_name)
-  		artist = self.new(artist_name)
-  		artist.name = artist_name
-  		@@all << artist
-  		artist
-  	end
+	# def self.create_by_name(artist_name)
+ #  		artist = self.new(artist_name)
+ #  		artist.name = artist_name
+ #  		@@all << artist
+ #  		artist
+ #  	end
 
   	def self.find_by_name(artist_name)
   		self.all.find{|artist| artist.name == artist_name}
   	end
 
   	def self.find_or_create_by_name(artist_name)
-  		self.find_by_name(artist_name) || self.create_by_name(artist_name)
+  		self.find_by_name(artist_name) || self.new(artist_name)
   	end
 	
 	def print_songs
